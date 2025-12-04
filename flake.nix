@@ -1,6 +1,6 @@
 {
   description = "Minimal NixOS installation media";
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.11";
   outputs =
     { self, nixpkgs }:
     {
@@ -14,7 +14,7 @@
                 imports = [ (modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix") ];
                 environment.systemPackages = [ pkgs.neovim ];
 
-		isoImage.squashfsCompression = "lz4";
+                isoImage.squashfsCompression = "lz4";
 
                 systemd.services.sshd.wantedBy = pkgs.lib.mkForce [ "multi-user.target" ];
                 users.users.root.openssh.authorizedKeys.keys = [
